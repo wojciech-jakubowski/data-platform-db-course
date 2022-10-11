@@ -1,4 +1,8 @@
 # Databricks notebook source
+# MAGIC %md ###Step 1 - read from csv
+
+# COMMAND ----------
+
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType, DoubleType
 
 # COMMAND ----------
@@ -24,12 +28,49 @@ circuits_df = spark.read \
 
 # COMMAND ----------
 
-display(circuits_df)
-
-# COMMAND ----------
-
 circuits_df.printSchema()
 
 # COMMAND ----------
 
-circuits_df.describe().show()
+# MAGIC %md ### Step 2 - select columns
+
+# COMMAND ----------
+
+from pyspark.sql.functions import col
+
+# COMMAND ----------
+
+circuits_selected_df = circuits_df.select(col("circuitId"), col("circuitRef"), col("name"), col("location"), col("country").alias("race_country"), col("lat"), col("lng"), col("alt"))
+
+# COMMAND ----------
+
+# MAGIC %md ### Step 3 - rename columns
+
+# COMMAND ----------
+
+circuits_renamed_df = circuits_selected_df.withColumnRenamed("circuitId", "circuit_id") \
+                            .withColumnRenamed("circuitRef", "circuit_ref") \
+                            .withColumnRenamed("lat", "latitude") \
+                            .withColumnRenamed("lng", "longitude") \
+                            .withColumnRenamed("alt", "altitude")
+
+# COMMAND ----------
+
+# MAGIC %md ### Step 4 - add ingestion date column 
+
+# COMMAND ----------
+
+from pyspark.sql.functions import current_timestamp, lit
+
+# COMMAND ----------
+
+circuits_final_df = circuits_renamed_df.withColumn("ingestion_date", current_timestamp()) \
+                        .withColumn("env", lit("Production"))
+
+# COMMAND ----------
+
+# MAGIC %md ### Step 5 - write to parquet
+
+# COMMAND ----------
+
+circuits_final_df.write.mode("overwrite").parquet("/mnt/processed/circuts")
