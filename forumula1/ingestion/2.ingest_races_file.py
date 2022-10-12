@@ -63,4 +63,4 @@ races_df_final = races_renamed_df \
 
 # COMMAND ----------
 
-races_df_final.write.mode("overwrite").parquet("/mnt/processed/races")
+races_df_final.write.mode("overwrite").partitionBy("race_year").parquet("/mnt/processed/races")
