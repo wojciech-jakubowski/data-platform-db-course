@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md ### Step 1 - read from CSV
+# MAGIC %md #### Step 1 - read from CSV
 
 # COMMAND ----------
 
@@ -24,7 +24,7 @@ races_df = spark.read.option("header", True).schema(races_schema).csv("/mnt/raw/
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 2 - select columns
+# MAGIC %md #### Step 2 - select columns
 
 # COMMAND ----------
 
@@ -32,7 +32,7 @@ races_selected_df = races_df.drop("url")
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 3 - rename columns
+# MAGIC %md #### Step 3 - rename columns
 
 # COMMAND ----------
 
@@ -43,7 +43,7 @@ races_renamed_df = races_selected_df  \
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 4 - transform
+# MAGIC %md #### Step 4 - transform
 
 # COMMAND ----------
 
@@ -59,7 +59,7 @@ races_df_final = races_renamed_df \
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 5 - save to parquet
+# MAGIC %md #### Step 5 - save to parquet
 
 # COMMAND ----------
 

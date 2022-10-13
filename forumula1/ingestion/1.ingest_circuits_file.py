@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md ###Step 1 - read from csv
+# MAGIC %md #### Step 1 - read from csv
 
 # COMMAND ----------
 
@@ -32,7 +32,7 @@ circuits_df.printSchema()
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 2 - select columns
+# MAGIC %md #### Step 2 - select columns
 
 # COMMAND ----------
 
@@ -44,7 +44,7 @@ circuits_selected_df = circuits_df.select(col("circuitId"), col("circuitRef"), c
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 3 - rename columns
+# MAGIC %md #### Step 3 - rename columns
 
 # COMMAND ----------
 
@@ -56,7 +56,7 @@ circuits_renamed_df = circuits_selected_df.withColumnRenamed("circuitId", "circu
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 4 - add ingestion date column 
+# MAGIC %md #### Step 4 - add ingestion date column 
 
 # COMMAND ----------
 
@@ -69,7 +69,7 @@ circuits_final_df = circuits_renamed_df.withColumn("ingestion_date", current_tim
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 5 - write to parquet
+# MAGIC %md #### Step 5 - write to parquet
 
 # COMMAND ----------
 

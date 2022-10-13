@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md ### Step 1 - read csv
+# MAGIC %md #### Step 1 - read csv
 
 # COMMAND ----------
 
@@ -34,7 +34,7 @@ results_df = spark.read \
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 2 - rename and add columns
+# MAGIC %md #### Step 2 - rename and add columns
 
 # COMMAND ----------
 
@@ -55,7 +55,7 @@ results_with_columns_df = results_df.withColumnRenamed("resultId", "result_id") 
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 3 - drop columns
+# MAGIC %md #### Step 3 - drop columns
 
 # COMMAND ----------
 
@@ -67,7 +67,7 @@ results_final_df = results_with_columns_df.drop(col("statusId"))
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 4 - write to parquet
+# MAGIC %md #### Step 4 - write to parquet
 
 # COMMAND ----------
 

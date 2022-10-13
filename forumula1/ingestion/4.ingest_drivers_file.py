@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md ### Step 1 - read json
+# MAGIC %md #### Step 1 - read json
 
 # COMMAND ----------
 
@@ -27,7 +27,7 @@ drivers_df = spark.read.schema(drivers_schema).json("/mnt/raw/drivers.json")
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 2 - rename columns
+# MAGIC %md #### Step 2 - rename columns
 
 # COMMAND ----------
 
@@ -42,7 +42,7 @@ drivers_with_columns_df = drivers_df.withColumnRenamed("driverId", "driver_id") 
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 3 - drop columns
+# MAGIC %md #### Step 3 - drop columns
 
 # COMMAND ----------
 

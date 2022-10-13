@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %md ### Step 1 - read JSON
+# MAGIC %md #### Step 1 - read JSON
 
 # COMMAND ----------
 
@@ -11,7 +11,7 @@ constructor_df = spark.read.schema(constructors_schema).json("/mnt/raw/construct
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 2 - drop column
+# MAGIC %md #### Step 2 - drop column
 
 # COMMAND ----------
 
@@ -19,7 +19,7 @@ constructor_dropped_df = constructor_df.drop(constructor_df.url)
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 3 - rename columns and add ingestion date
+# MAGIC %md #### Step 3 - rename columns and add ingestion date
 
 # COMMAND ----------
 
@@ -34,7 +34,7 @@ constructor_final_df = constructor_dropped_df \
 
 # COMMAND ----------
 
-# MAGIC %md ### Step 4 - write to parquet
+# MAGIC %md #### Step 4 - write to parquet
 
 # COMMAND ----------
 
